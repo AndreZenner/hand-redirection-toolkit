@@ -1,4 +1,6 @@
-# Hand-Redirection-Toolkit
+# Hand-Redirection-Toolkit (coming soon; content expected to be available here by May 08, 2021)
+
+[![HaRT Teaser Video](http://img.youtube.com/vi/w_HhzcV0ndM/0.jpg)](http://www.youtube.com/watch?v=w_HhzcV0ndM)
 
 The Virtual Reality Hand Redirection Toolkit (HaRT) is an open-source toolkit developed for the Unity engine. The toolkit aims
 to support VR researchers and developers in implementing and evaluating hand redirection techniques. It provides implementations of popular redirection algorithms and exposes a modular class hierarchy for easy integration of new approaches. Moreover, simulation, logging, and visualization features allow users of the toolkit to analyze hand redirection setups with minimal technical effort.
