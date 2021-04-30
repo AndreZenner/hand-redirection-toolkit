@@ -15,7 +15,11 @@ To learn about this toolkit, please watch our video on YouTube:
 
 For further details, please have a look at the [paper about the HaRT](https://doi.org/10.1145/3411763.3451814) published at ACM CHI 2021.
 
-![HaRT Paper](../../wiki/uploads/paperTeaser.png)
+<p align="center">
+  <a href="https://doi.org/10.1145/3411763.3451814">
+  <img src="../../wiki/uploads/paperTeaser.png">
+  </a>
+</p>
 
 ## Get Started
 To get started with the toolkit **visit the [Wiki](../../wiki)**. The wiki contains short instructions as well as step-by-step tutorials and further details about the toolkit.
