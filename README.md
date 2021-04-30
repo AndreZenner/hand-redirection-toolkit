@@ -21,8 +21,10 @@ For further details, please have a look at the [paper about the HaRT](https://do
 To get started with the toolkit **visit the [Wiki](../../wiki)**. The wiki contains short instructions as well as step-by-step tutorials and further details about the toolkit.
 
 ## Downloads
-- [HaRT_core](Packages/HaRT_core.unitypackage) -> standalone Unity Version (No VR), requires the HaRT_core package and [SteamVR](https://assetstore.unity.com/packages/tools/integration/steamvr-plugin-32647)
-- [HaRT_Leap](Packages/HaRT_leap.unitypackage) -> requires the HaRT_core and [Leap Motion SDK](https://developer.leapmotion.com/unity)
+- [HaRT_core](Packages/HaRT_core.unitypackage) -> standalone Unity Version (for VR and Non-VR usage); requires [SteamVR](https://assetstore.unity.com/packages/tools/integration/steamvr-plugin-32647)
+
+optional add-on:
+- [HaRT_Leap](Packages/HaRT_leap.unitypackage) -> if you want to use Leap Motion; requires the HaRT_core package (see above), SteamVR (see above), and [Leap Motion SDK](https://developer.leapmotion.com/unity)
 
 For more details, visit our [Get Started Guide in the Wiki](../../wiki/Get-Started)
 
@@ -43,4 +45,4 @@ TODO BIBTEX HERE
 ## Contact
 
 This toolkit was created by Hannah Kriegler as part of a Bachelor Thesis at the [Ubiquitous Media Technology Lab](https://umtl.cs.uni-saarland.de/) ([Saarland University](https://www.uni-saarland.de/start.html)), advised by [André Zenner](https://umtl.cs.uni-saarland.de/people/andre-zenner.html).
-If you have any questions, feel free to contact [Hannah](hannah.kriegler@dfki.de) or [André](andre.zenner@dfki.de)
+If you have any questions, feel free to contact [Hannah](hannah.kriegler@dfki.de) or [André](andre.zenner@dfki.de).
