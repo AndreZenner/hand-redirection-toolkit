@@ -77,11 +77,6 @@ namespace HR_Toolkit
         /// The last redirected target
         /// </summary>
         public RedirectionObject lastTarget;
-        
-        public List<TestController> testControllers; // TODO
-        public PathGenerator pathGenerator; // TODO
-        public LogFile logFile; // TODO
-
 
         /// <summary>
         /// The speed of the hand movement when the hand is controlled by the mouse

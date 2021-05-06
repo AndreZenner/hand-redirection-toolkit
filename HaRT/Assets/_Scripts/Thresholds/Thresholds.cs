@@ -14,18 +14,7 @@ namespace HR_Toolkit.Thresholds
         }
         
         public Warning actualWarningState = Warning.NotSet;
-
-        protected Warning CheckForWarnings()
-        {
-            // TODO
-            throw new NotImplementedException();
-        }
-
-        public void LogWarnings(LogFile logFile)
-        {
-            // TODO
-            throw new NotImplementedException();
-        }
+        
         
     }
 }
