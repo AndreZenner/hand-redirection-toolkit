@@ -10,7 +10,7 @@ to support VR researchers and developers in implementing and evaluating hand red
 To learn about this toolkit, please watch our video on YouTube:
 
 
-[![HaRT Teaser Video](../../wiki/uploads/ReadmeTeaserImg.png)](http://www.youtube.com/watch?v=w_HhzcV0ndM)
+[![HaRT Teaser Video](../../wiki/uploads/ReadmeTeaserImg.png)](https://youtu.be/4Gz2Sh8eduk)
 
 
 For further details, please have a look at the [paper about the HaRT](https://doi.org/10.1145/3411763.3451814) published at ACM CHI 2021.
@@ -40,11 +40,13 @@ We have created and tested the toolkit only on Windows 10 and Unity 2019.4, but 
 
 If you use the toolkit for one of your cool projects, please reference the toolkit given the information below and feel free to drop us a message:
 
+> André Zenner, Hannah Maria Kriegler, and Antonio Krüger. 2021. HaRT - The Virtual Reality Hand Redirection Toolkit.
+> In CHI Conference on Human Factors in Computing Systems Extended Abstracts (CHI ’21 Extended Abstracts), May 8–13, 2021, Yokohama, Japan. 
+> ACM, New York, NY, USA, 7 pages. https://doi.org/10.1145/3411763.3451814
+
 ``` 
 TODO BIBTEX HERE
 ```
-
-> TODO REFERENCE
 
 ## Contact
 
