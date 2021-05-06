@@ -23,6 +23,7 @@
 
 # Old Unity Scenes
 [Aa]ssets/Scenes/**
+[Aa]ssets/ExampleScenes/Videos/**
 
 # Plugins 
 [Aa]ssets/Plugins/**
