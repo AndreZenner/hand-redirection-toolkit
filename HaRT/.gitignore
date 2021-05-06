@@ -31,6 +31,10 @@
 [Aa]ssets/SteamVR/**
 [Aa]ssets/SteamVR_Input/**
 [Aa]ssets/SteamVR_Resources/**
+[Aa]ssets/SteamVR.meta
+[Aa]ssets/SteamVR_Input.meta
+[Aa]ssets/SteamVR_Resources.meta
+[Aa]ssets/StreamingAssets/SteamVR.meta
 
 
 # Straming assets form Steam VR
