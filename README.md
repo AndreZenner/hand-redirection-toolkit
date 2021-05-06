@@ -45,7 +45,7 @@ If you use the toolkit for one of your cool projects, please reference the toolk
 > ACM, New York, NY, USA, 7 pages. https://doi.org/10.1145/3411763.3451814
 
 ``` 
-TODO BIBTEX HERE
+BIBTEX COMING HERE SOON
 ```
 
 ## Contact
