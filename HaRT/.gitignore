@@ -47,6 +47,9 @@
 [Aa]ssets/StreamingAssets/SteamVR/**
 [Aa]ssets/StreamingAssets.meta
 
+# VR Manifest file from SteamVR
+unityProject.vrmanifest
+
 # Visual Studio cache directory
 .vs/
 
