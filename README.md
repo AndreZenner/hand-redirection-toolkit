@@ -28,7 +28,7 @@ To get started with the toolkit **visit the [Wiki](../../wiki)**. The wiki conta
 - [HaRT_core](Packages/HaRT_core.unitypackage) -> standalone Unity Version (for VR and Non-VR usage); requires [SteamVR](https://assetstore.unity.com/packages/tools/integration/steamvr-plugin-32647)
 
 optional add-on:
-- [HaRT_Leap](Packages/HaRT_leap.unitypackage) -> if you want to use Leap Motion; requires the HaRT_core package (see above), SteamVR (see above), and [Leap Motion SDK](https://developer.leapmotion.com/unity)
+- [HaRT_Leap](Packages/HaRT_Leap.unitypackage) -> if you want to use Leap Motion; requires the HaRT_core package (see above), SteamVR (see above), and [Leap Motion SDK](https://developer.leapmotion.com/unity)
 
 For more details, visit our [Get Started Guide in the Wiki](../../wiki/Get-Started)
 
