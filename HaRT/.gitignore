@@ -31,6 +31,7 @@
 
 # Plugins 
 [Aa]ssets/Plugins/**
+[Aa]ssets/Plugins.meta
 
 # Steam VR
 [Aa]ssets/SteamVR/**
@@ -44,6 +45,10 @@
 
 # Straming assets form Steam VR
 [Aa]ssets/StreamingAssets/SteamVR/**
+[Aa]ssets/StreamingAssets.meta
+
+# VR Manifest file from SteamVR
+unityProject.vrmanifest
 
 # Visual Studio cache directory
 .vs/

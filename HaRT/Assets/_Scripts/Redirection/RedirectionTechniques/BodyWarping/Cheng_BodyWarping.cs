@@ -37,8 +37,13 @@ namespace HR_Toolkit
         /// <summary>
         /// Checks if the real hand stayed in the Zero Warp Zone
         /// </summary>
-        private bool _isInZeroWarpZone = true;
-        
+        private bool _isInZeroWarpZone = false;
+        /// <summary>
+        /// distance in m from player position where no warping is applied
+        /// </summary>
+        public float zeroWarpDistance = 0;
+
+
         public override void ApplyRedirection(Transform realHandPos, Transform virtualHandPos, 
             Transform warpOrigin, RedirectionObject target, Transform playerTransform)
         {
@@ -79,8 +84,6 @@ namespace HR_Toolkit
             _t = redirectionObject.GetVirtualTargetPos() - redirectionObject.GetRealTargetPos();
             // not yet implemented: non-zero initial offsets
             _t0 = Vector3.zero;
-
-
         }
     }
 }

@@ -530,7 +530,7 @@ PrefabInstance:
     - target: {fileID: 5757090491356117767, guid: 13e09beb6ff11f04b863cfb0c4099342,
         type: 3}
       propertyPath: m_Name
-      value: HaRT_VR
+      value: HaRT_coreWithVR
       objectReference: {fileID: 0}
     - target: {fileID: 5757090491356117767, guid: 13e09beb6ff11f04b863cfb0c4099342,
         type: 3}
@@ -648,6 +648,14 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 11417168, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
+      propertyPath: shader
+      value: 
+      objectReference: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 11417306, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
+      propertyPath: shader
+      value: 
+      objectReference: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 11489174, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
       propertyPath: m_Enabled
       value: 0
