@@ -12,8 +12,6 @@ namespace HR_Toolkit
     /// </summary>
     public class BodyWarping : HandRedirector
     {
-        public float zeroWarpDistance;
-
         [Header("Thresholds")] 
         [Range(0f, 40.5f)]
         public float horizontalThreshold;

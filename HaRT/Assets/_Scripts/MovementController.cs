@@ -1,7 +1,8 @@
 ﻿#define VR
 using System;
 using HR_Toolkit;
-///using Leap.Unity;
+// COMMENT OUT IF NOT USING LEAP
+using Leap.Unity;
 using UnityEngine;
 
 
@@ -71,9 +72,10 @@ public class MovementController : MonoBehaviour
                 // works only if the Leap Motion Unity Package is installed!
                 // if you want to use the Leap Motion Setup, please uncomment the following two lines. If you are aware
                 // of a more elegant way to include this, feel free to send us a mail 
-                
-                //if(trackedHand.GetComponent<CapsuleHand>().GetLeapHand().GetPalmPose() == null) break;
-                //obj.transform.position = trackedHand.GetComponent<CapsuleHand>().GetLeapHand().GetPalmPose().position;
+
+                // COMMENT OUT IF NOT USING LEAP
+                if(trackedHand.GetComponent<CapsuleHand>().GetLeapHand().GetPalmPose() == null) break;
+                    obj.transform.position = trackedHand.GetComponent<CapsuleHand>().GetLeapHand().GetPalmPose().position;
                 break;
         }
     }
