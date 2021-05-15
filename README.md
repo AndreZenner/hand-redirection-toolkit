@@ -67,4 +67,4 @@ series = {CHI EA '21}
 ## Contact
 
 This toolkit was created by Hannah Kriegler as part of a Bachelor Thesis at the [Ubiquitous Media Technology Lab](https://umtl.cs.uni-saarland.de/) ([Saarland University](https://www.uni-saarland.de/start.html)), advised by [André Zenner](https://umtl.cs.uni-saarland.de/people/andre-zenner.html).
-If you have any questions, feel free to contact [Hannah](hannah.kriegler@dfki.de) or [André](andre.zenner@dfki.de).
+If you have any questions, feel free to contact [Hannah](mailto:hannah.kriegler@dfki.de) or [André](mailto:andre.zenner@dfki.de).
