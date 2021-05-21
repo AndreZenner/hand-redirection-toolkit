@@ -44,10 +44,15 @@ public class MovementController : MonoBehaviour
 
     public void MoveHand()
     {
+        this.currentMovement = RedirectionManager.instance.movement;
         switch (currentMovement)
         {
             case Movement.Mouse:
                 if (!Input.GetMouseButton(0)) return;
+
+                this.speed = RedirectionManager.instance.speed;
+                this.mouseWheelSpeed = RedirectionManager.instance.mouseWheelSpeed;
+
                 var translationZ = Input.GetAxis("Mouse Y") * speed;
                 var translationX = Input.GetAxis("Mouse X") * speed;
                 var translationY = Input.GetAxis("Mouse ScrollWheel") * mouseWheelSpeed;
@@ -73,9 +78,9 @@ public class MovementController : MonoBehaviour
                 // if you want to use the Leap Motion Setup, please uncomment the following two lines. If you are aware
                 // of a more elegant way to include this, feel free to send us a mail 
 
-                // COMMENT OUT IF NOT USING LEAP
-                if(trackedHand.GetComponent<CapsuleHand>().GetLeapHand().GetPalmPose() == null) break;
-                    obj.transform.position = trackedHand.GetComponent<CapsuleHand>().GetLeapHand().GetPalmPose().position;
+                // COMMENT OUT IF NOT USING LEAP (AND PLEASE REMEMBER TO COMMENT OUT INCLUDE ABOVE)
+                if (trackedHand.GetComponent<CapsuleHand>().GetLeapHand().GetPalmPose() == null) break;
+                obj.transform.position = trackedHand.GetComponent<CapsuleHand>().GetLeapHand().GetPalmPose().position;
                 break;
         }
     }

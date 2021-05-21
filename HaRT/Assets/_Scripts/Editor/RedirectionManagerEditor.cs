@@ -8,9 +8,8 @@ using UnityEditor;
 [CanEditMultipleObjects]
 public class RedirectionManagerEditor : Editor
 {
-
-    int _choiceIndex = 0;
-    private string[] _choices = Enum.GetNames(typeof(MovementController.Movement));
+    
+    private SerializedProperty _movement;
     private RedirectionManager _redirectionManager;
 
     private SerializedProperty _virtualWorld;
@@ -32,6 +31,7 @@ public class RedirectionManagerEditor : Editor
 
     private void OnEnable()
     {
+        _movement= serializedObject.FindProperty("movement");
         _virtualWorld = serializedObject.FindProperty("virtualWorld");
         _realHand = serializedObject.FindProperty("realHand");
         _virtualHand = serializedObject.FindProperty("virtualHand");
@@ -59,8 +59,9 @@ public class RedirectionManagerEditor : Editor
         EditorGUILayout.PropertyField(_virtualHand, new GUIContent("Virtual Hand"));
         EditorGUILayout.PropertyField(_warpOrigin, new GUIContent("Warp Origin"));
         EditorGUILayout.PropertyField(_body, new GUIContent("Body"));
-        
-        DefineMovement();
+        EditorGUILayout.LabelField("Movement Options", EditorStyles.whiteLargeLabel);
+        EditorGUILayout.PropertyField(_movement, new GUIContent("Movement"));
+
         DefineRedirectedPrefabSection();
         DefineRedirectionSection();
         //DefineThresholdControllerSection();
@@ -77,13 +78,11 @@ public class RedirectionManagerEditor : Editor
         }*/
 
         serializedObject.ApplyModifiedProperties();
+        DefineMovement();
     }
     
     private void DefineMovement()
     {
-        EditorGUILayout.LabelField("Movement Options", EditorStyles.whiteLargeLabel);
-        _choiceIndex = EditorGUILayout.Popup("Movement", _choiceIndex, _choices);
-
         _redirectionManager.movementController = _redirectionManager.GetComponent<MovementController>();
         if (_redirectionManager.movementController == null)
         {
@@ -92,35 +91,10 @@ public class RedirectionManagerEditor : Editor
         }
 
         // Mouse Movement
-        if (_choices[_choiceIndex] == MovementController.Movement.Mouse.ToString())
+        if (_redirectionManager.movement == MovementController.Movement.Mouse)
         {
-            _redirectionManager.movementController.currentMovement = MovementController.Movement.Mouse;
-            _redirectionManager.speed = EditorGUILayout.Slider("Speed",_redirectionManager.speed, 1f, 20f);
-            _redirectionManager.mouseWheelSpeed = EditorGUILayout.Slider("Mouse Wheel Speed",_redirectionManager.mouseWheelSpeed, 1f, 20f);
-            
-            // apply to Movement Controller
-            _redirectionManager.movementController.speed = _redirectionManager.speed;
-            _redirectionManager.movementController.mouseWheelSpeed = _redirectionManager.mouseWheelSpeed;
-        }
-        
-        /*// Auto Pilot Movement
-        else if (_choices[_choiceIndex] == MovementController.Movement.AutoPilot.ToString())
-        {
-            _redirectionManager.movementController.currentMovement = MovementController.Movement.AutoPilot;
-            _redirectionManager.speed = EditorGUILayout.Slider("Speed",_redirectionManager.speed, 1f, 20f);
-            // apply to Movement Controller
-            _redirectionManager.movementController.speed = _redirectionManager.speed;
-        }*/
-        
-        // VR Movement
-        else if (_choices[_choiceIndex] == MovementController.Movement.VR.ToString())
-        {
-            _redirectionManager.movementController.currentMovement = MovementController.Movement.VR;
-        }
-        
-        else if (_choices[_choiceIndex] == MovementController.Movement.Leap.ToString())
-        {
-            _redirectionManager.movementController.currentMovement = MovementController.Movement.Leap;
+            _redirectionManager.speed = EditorGUILayout.Slider("Speed", _redirectionManager.speed, 1f, 20f);
+            _redirectionManager.mouseWheelSpeed = EditorGUILayout.Slider("Mouse Wheel Speed", _redirectionManager.mouseWheelSpeed, 1f, 20f);
         }
     }
 

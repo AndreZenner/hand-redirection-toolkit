@@ -33,6 +33,10 @@
 [Aa]ssets/Plugins/**
 [Aa]ssets/Plugins.meta
 
+# Vive SR Anipal
+[Aa]ssets/ViveSR/**
+[Aa]ssets/ViveSR.meta
+
 # Steam VR
 [Aa]ssets/SteamVR/**
 [Aa]ssets/SteamVR_Input/**
