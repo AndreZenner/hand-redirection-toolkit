@@ -152,6 +152,10 @@ namespace HR_Toolkit
 
             if (target == null) return;
 
+            //use hand rotation of real hand (can be overwritten by Redirect())
+            virtualHand.transform.rotation = realHand.transform.rotation;
+
+            //apply redirection
             target.Redirect();
 
         }
