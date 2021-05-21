@@ -4,15 +4,30 @@ using HR_Toolkit;
 using UnityEngine;
 using System.Linq;
 
+/// <summary>
+/// Implementation of the Blink Suppressed Hand Redirection Algorithm by Zenner, Regitz, Krueger (IEEE VR 2021)
+/// For details about the implementation please see the paper https://doi.org/10.1109/VR50410.2021.00028
+/// A video introduction to this technique can be found here: https://umtl.cs.uni-saarland.de/research/projects/blink-suppressed-hand-redirection.html
+/// 
+/// More information:
+/// A. Zenner, K. P. Regitz and A. Krüger, "Blink-Suppressed Hand Redirection," 
+/// 2021 IEEE Virtual Reality and 3D User Interfaces (VR), 2021, pp. 75-84, 
+/// doi: https://doi.org/10.1109/VR50410.2021.00028
+/// 
+/// </summary>
 public class Zenner_Regitz_Krueger_BodyWarping_BSHR : BodyWarping
 {
-    public float betaMax = 4.5f;
+    //default values as used in the original paper
+    public float betaMax = 4.5f;    
     public float gMin = 0.94f;
     public float gMax = 1.14f;
 
+    /// <summary>
+    /// To simulate a blink with a key press B.
+    /// </summary>
     public bool testWithKeyB = false;
 
-
+    //variables of the original algorithm
     private Vector3 o,v,p,ov,op,vp;
     private Vector3 b;      // offset vector
     private Vector3 p_;     // dummy target
@@ -36,7 +51,7 @@ public class Zenner_Regitz_Krueger_BodyWarping_BSHR : BodyWarping
         if (!testWithKeyB)
         {
             GetComponent<BlinkDetector>().running = true;
-            GetComponent<BlinkDetector>().blinked = false;
+            GetComponent<BlinkDetector>().validBlinkDetected = false;
         }
 
     }
@@ -51,7 +66,7 @@ public class Zenner_Regitz_Krueger_BodyWarping_BSHR : BodyWarping
                 b = p_ - p;
             }
         }
-        else if (GetComponent<BlinkDetector>().blinked){
+        else if (GetComponent<BlinkDetector>().validBlinkDetected){
             b = p_ - p;
         }
   

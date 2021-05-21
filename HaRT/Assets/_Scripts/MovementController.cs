@@ -43,10 +43,15 @@ public class MovementController : MonoBehaviour
 
     public void MoveHand()
     {
+        this.currentMovement = RedirectionManager.instance.movement;
         switch (currentMovement)
         {
             case Movement.Mouse:
                 if (!Input.GetMouseButton(0)) return;
+
+                this.speed = RedirectionManager.instance.speed;
+                this.mouseWheelSpeed = RedirectionManager.instance.mouseWheelSpeed;
+
                 var translationZ = Input.GetAxis("Mouse Y") * speed;
                 var translationX = Input.GetAxis("Mouse X") * speed;
                 var translationY = Input.GetAxis("Mouse ScrollWheel") * mouseWheelSpeed;

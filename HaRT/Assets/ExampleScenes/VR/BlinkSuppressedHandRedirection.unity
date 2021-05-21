@@ -491,6 +491,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7407440559359026766, guid: a441762dcaf443644813f8186313cdf5,
+        type: 3}
+      propertyPath: shader
+      value: 
+      objectReference: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 7407440559359026884, guid: a441762dcaf443644813f8186313cdf5,
+        type: 3}
+      propertyPath: shader
+      value: 
+      objectReference: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 7407440559644861539, guid: a441762dcaf443644813f8186313cdf5,
+        type: 3}
+      propertyPath: movement
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7407440559644861539, guid: a441762dcaf443644813f8186313cdf5,
+        type: 3}
+      propertyPath: choiceIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7407440559644861539, guid: a441762dcaf443644813f8186313cdf5,
         type: 3}
       propertyPath: virtualWorld
@@ -511,6 +531,11 @@ PrefabInstance:
       propertyPath: allRedirectedPrefabs.Array.data[0]
       value: 
       objectReference: {fileID: 822043432}
+    - target: {fileID: 7407440559644861540, guid: a441762dcaf443644813f8186313cdf5,
+        type: 3}
+      propertyPath: movement
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7492868640346519891, guid: a441762dcaf443644813f8186313cdf5,
         type: 3}
       propertyPath: redirectionTechnique
@@ -1087,9 +1112,19 @@ PrefabInstance:
       objectReference: {fileID: 481514618}
     - target: {fileID: 6397507091966502294, guid: bc29303738e521d40a4c5681b1196f8f,
         type: 3}
+      propertyPath: drawRay
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6397507091966502294, guid: bc29303738e521d40a4c5681b1196f8f,
+        type: 3}
       propertyPath: virtualHand
       value: 
       objectReference: {fileID: 481514619}
+    - target: {fileID: 6397507091966502295, guid: bc29303738e521d40a4c5681b1196f8f,
+        type: 3}
+      propertyPath: testWithKeyB
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6397507091966502296, guid: bc29303738e521d40a4c5681b1196f8f,
         type: 3}
       propertyPath: m_Name

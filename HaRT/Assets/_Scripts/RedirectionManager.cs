@@ -88,6 +88,11 @@ namespace HR_Toolkit
         /// </summary>
         [HideInInspector]
         public float mouseWheelSpeed;
+        /// <summary>
+        /// The selected movement option.
+        /// </summary>
+        [HideInInspector]
+        public MovementController.Movement movement;
 
         private LineRenderer lineRenderer;
         
