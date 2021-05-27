@@ -27,8 +27,11 @@ To get started with the toolkit **visit the [Wiki](../../wiki)**. The wiki conta
 ## Downloads
 - [HaRT_core](Packages/HaRT_core.unitypackage) -> standalone Unity Version (for VR and Non-VR usage); requires [SteamVR](https://assetstore.unity.com/packages/tools/integration/steamvr-plugin-32647)
 
-optional add-on:
+optional add-on #1:
 - [HaRT_Leap](Packages/HaRT_Leap.unitypackage) -> if you want to use Leap Motion; requires the HaRT_core package (see above), SteamVR (see above), and [Leap Motion SDK](https://developer.leapmotion.com/unity)
+
+optional add-on #2:
+- [HaRT_VR_BlinkSuppressedHandRedirection](Packages/HaRT_VR_BlinkSuppressedHandRedirection.unitypackage) -> if you want to use eye tracking with the Vive Pro Eye and make use of the Blink-Suppressed Hand Redirection Technique; requires the HaRT_core package (see above), SteamVR (see above), and [SRAnipal SDK](https://developer.vive.com/resources/vive-sense/sdk/vive-eye-and-facial-tracking-sdk/)
 
 For more details, visit our [Get Started Guide in the Wiki](../../wiki/Get-Started)
 
