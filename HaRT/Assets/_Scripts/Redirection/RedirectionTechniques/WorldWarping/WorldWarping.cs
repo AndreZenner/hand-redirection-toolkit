@@ -15,12 +15,16 @@ namespace HR_Toolkit
 
         protected Transform world;
         
+        [Header("Trigger Threshold Settings")]
         [Tooltip("The amount that is needed to classify a head rotation as real rotation")]
-        private static float HEAD_ROTATION_TRIGGER_THRESHOLD = 20f;
+        [Range(0f, 30f)]
+        public float headRotationTrigger = 20f;
         private static float MAX_POSSIBLE_HEAD_ROTATION = 180f;
         private static float OBJECTS_ARE_ALIGNED_THRESHOLD = 0.1f;
 
-        private static float HEAD_TRANSLATION_TRIGGER_THRESHOLD = 0.0005f;
+        [Tooltip("The amount that is needed to classify a head translation as real translation")]
+        [Range(0.0001f, 0.5f)]
+        public float headTranslationTrigger = 0.0005f;
         private static float MAX_POSSIBLE_HEAD_TRANSLATION = 0.1f;
         private static float OBJECTS_ARE_TRANSLATIONAL_ALIGNED = 0.01f;
 
@@ -102,7 +106,7 @@ namespace HR_Toolkit
             rFrame = rotInDeg;
 
             // is rotating?
-            rotating = Mathf.Abs(rSeconds) > HEAD_ROTATION_TRIGGER_THRESHOLD;
+            rotating = Mathf.Abs(rSeconds) > headRotationTrigger;
             
             // Check if we rotate clockwise
             rotatingClockwise = RotationIsClockwise(lastHeadTranslation, currentHeadTranslation);
@@ -222,7 +226,7 @@ namespace HR_Toolkit
             }
             
             // check if moving at all
-            if (translationDif < HEAD_TRANSLATION_TRIGGER_THRESHOLD)
+            if (translationDif < headTranslationTrigger)
             {
                 moving = false;
                 movingTowardsTarget = false;
