@@ -25,7 +25,8 @@ namespace HR_Toolkit
                 if (path.Contains("Leap") 
                     || path.Contains("BlinkDetector")
                     || path.Contains("Math3D")
-                    || path.Contains("BSHR"))
+                    || path.Contains("BSHR")
+                    || path.Contains("PackageGeneration"))
                 {
                     continue;
                 }
@@ -45,23 +46,36 @@ namespace HR_Toolkit
                 exportedPackageAssetList.Add(path);
             }
             
-            // prefabs: get all except HaRT_Leap
+            // prefabs: get all except HaRT_Leap and BSHR
             foreach (var guid in AssetDatabase.FindAssets("", new []{"Assets/Prefabs"}))
             {
                 var path = AssetDatabase.GUIDToAssetPath(guid);
-                if (path.Contains("Leap"))
+                if (path.Contains("Leap")
+                    || path.Contains("BSHR"))
                 {
                     continue;
                 }
                 exportedPackageAssetList.Add(path);
             }
-
-            exportedPackageAssetList.Add("Assets/Materials");
             
-            exportedPackageAssetList.Add("Assets/Models");
+            // materials: get all
+            foreach (var guid in AssetDatabase.FindAssets("", new []{"Assets/Materials"}))
+            {
+                var path = AssetDatabase.GUIDToAssetPath(guid);
+                exportedPackageAssetList.Add(path);
+            }
+            //exportedPackageAssetList.Add("Assets/Materials");
             
-            AssetDatabase.ExportPackage(exportedPackageAssetList.ToArray(), "Assets/../../Packages/Test_HaRT_core.unitypackage", 
-                ExportPackageOptions.Recurse);
+            
+            // models: get all
+            foreach (var guid in AssetDatabase.FindAssets("", new []{"Assets/Models"}))
+            {
+                var path = AssetDatabase.GUIDToAssetPath(guid);
+                exportedPackageAssetList.Add(path);
+            }
+            //exportedPackageAssetList.Add("Assets/Models");
+            
+            AssetDatabase.ExportPackage(exportedPackageAssetList.ToArray(), "Assets/../../Packages/Test_HaRT_core.unitypackage");
             
             Debug.Log("Finished core Exporter");
         }
