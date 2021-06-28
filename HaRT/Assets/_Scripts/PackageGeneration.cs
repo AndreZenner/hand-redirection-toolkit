@@ -79,6 +79,7 @@ namespace HR_Toolkit
             
             Debug.Log("Finished core Exporter");
         }
+        
         /// <summary>
         /// Export all assets for the HaRT_Leap package automatically
         /// </summary>
@@ -104,14 +105,13 @@ namespace HR_Toolkit
             
             // prefabs: get only leap scenes
             // TODO leap rig is currently missing!!
-            /*foreach (var guid in AssetDatabase.FindAssets("Leap", new []{"Assets/Prefabs"}))
+            foreach (var guid in AssetDatabase.FindAssets("Leap", new []{"Assets/Prefabs"}))
             {
                 var path = AssetDatabase.GUIDToAssetPath(guid);
                 exportedPackageAssetList.Add(path);
-            }*/
+            }
 
-            AssetDatabase.ExportPackage(exportedPackageAssetList.ToArray(), "Assets/../../Test_HaRT_Leap.unitypackage",
-                ExportPackageOptions.Recurse);
+            AssetDatabase.ExportPackage(exportedPackageAssetList.ToArray(), "Assets/../../Test_HaRT_Leap.unitypackage");
             
             Debug.Log("Finished Leap Exporter");
         }
