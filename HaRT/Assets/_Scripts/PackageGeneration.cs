@@ -72,7 +72,7 @@ namespace HR_Toolkit
                 exportedPackageAssetList.Add(path);
             }
             
-            AssetDatabase.ExportPackage(exportedPackageAssetList.ToArray(), "Assets/../../Packages/Test_HaRT_core.unitypackage");
+            AssetDatabase.ExportPackage(exportedPackageAssetList.ToArray(), "Assets/../../Packages/HaRT_core.unitypackage");
             
             Debug.Log("Finished core Exporter");
         }
@@ -101,14 +101,18 @@ namespace HR_Toolkit
             }
             
             // prefabs: get only leap scenes
-            // TODO leap rig is currently missing!!
             foreach (var guid in AssetDatabase.FindAssets("Leap", new []{"Assets/Prefabs"}))
             {
                 var path = AssetDatabase.GUIDToAssetPath(guid);
                 exportedPackageAssetList.Add(path);
             }
+            
+            // The hart_leap package adds more option to some hart_core scripts, like for example to the movementcontroller.
+            // These options will only be used if the custom global "Leap" preprocessor is enabled. The csc.rsp file
+            // enables it and is therefore added with the hart_leap package.
+            exportedPackageAssetList.Add("Assets/csc.rsp");
 
-            AssetDatabase.ExportPackage(exportedPackageAssetList.ToArray(), "Assets/../../Test_HaRT_Leap.unitypackage");
+            AssetDatabase.ExportPackage(exportedPackageAssetList.ToArray(), "Assets/../../Packages/HaRT_Leap.unitypackage");
             
             Debug.Log("Finished Leap Exporter");
         }
@@ -124,7 +128,6 @@ namespace HR_Toolkit
             
             foreach (var guid in AssetDatabase.FindAssets("", new []{"Assets/_Scripts/Redirection/RedirectionTechniques/BodyWarping/Zenner_Regitz_Krueger_BodyWarping_BSHR"}))
             {
-                Debug.Log("found one");
                 var path = AssetDatabase.GUIDToAssetPath(guid);
                 exportedPackageAssetList.Add(path);
             }
@@ -136,7 +139,7 @@ namespace HR_Toolkit
                 exportedPackageAssetList.Add(path);
             }
 
-            AssetDatabase.ExportPackage(exportedPackageAssetList.ToArray(), "Assets/../../Test_HaRT_BSHR.unitypackage");
+            AssetDatabase.ExportPackage(exportedPackageAssetList.ToArray(), "Assets/../../Packages/HaRT_BSHR.unitypackage");
             
             Debug.Log("Finished BSHR Exporter");
         }
