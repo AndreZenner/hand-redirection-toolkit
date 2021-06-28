@@ -64,8 +64,6 @@ namespace HR_Toolkit
                 var path = AssetDatabase.GUIDToAssetPath(guid);
                 exportedPackageAssetList.Add(path);
             }
-            //exportedPackageAssetList.Add("Assets/Materials");
-            
             
             // models: get all
             foreach (var guid in AssetDatabase.FindAssets("", new []{"Assets/Models"}))
@@ -73,7 +71,6 @@ namespace HR_Toolkit
                 var path = AssetDatabase.GUIDToAssetPath(guid);
                 exportedPackageAssetList.Add(path);
             }
-            //exportedPackageAssetList.Add("Assets/Models");
             
             AssetDatabase.ExportPackage(exportedPackageAssetList.ToArray(), "Assets/../../Packages/Test_HaRT_core.unitypackage");
             
@@ -125,7 +122,12 @@ namespace HR_Toolkit
             Debug.Log("Start BSHR Exporter");
             var exportedPackageAssetList = new List<string>();
             
-            exportedPackageAssetList.Add("Assets/_Scripts/RedirectionTechniques/BodyWarping/Zenner_Regitz_Krueger_BodyWarping_BSHR");
+            foreach (var guid in AssetDatabase.FindAssets("", new []{"Assets/_Scripts/Redirection/RedirectionTechniques/BodyWarping/Zenner_Regitz_Krueger_BodyWarping_BSHR"}))
+            {
+                Debug.Log("found one");
+                var path = AssetDatabase.GUIDToAssetPath(guid);
+                exportedPackageAssetList.Add(path);
+            }
             
             // example scenes: get only BSHR scenes
             foreach (var guid in AssetDatabase.FindAssets("Blink", new []{"Assets/ExampleScenes"}))
@@ -133,9 +135,8 @@ namespace HR_Toolkit
                 var path = AssetDatabase.GUIDToAssetPath(guid);
                 exportedPackageAssetList.Add(path);
             }
-            
-            AssetDatabase.ExportPackage(exportedPackageAssetList.ToArray(), "Assets/../../Test_HaRT_BSHR.unitypackage",
-                ExportPackageOptions.Recurse);
+
+            AssetDatabase.ExportPackage(exportedPackageAssetList.ToArray(), "Assets/../../Test_HaRT_BSHR.unitypackage");
             
             Debug.Log("Finished BSHR Exporter");
         }
