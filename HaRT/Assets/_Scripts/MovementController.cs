@@ -75,9 +75,6 @@ public class MovementController : MonoBehaviour
                 realHand.transform.rotation = trackedHand.transform.rotation;
                 break;
             case Movement.Leap:
-                // works only if the Leap Motion Unity Package is installed!
-                // if you want to use the Leap Motion Setup, please uncomment the first line where leap is defined. If you are aware
-                // of a more elegant way to include this, feel free to send us a mail 
 #if Leap
                 if (trackedHand.GetComponent<CapsuleHand>().GetLeapHand().GetPalmPose() == null) break;
                 obj.transform.position = trackedHand.GetComponent<CapsuleHand>().GetLeapHand().GetPalmPose().position;
