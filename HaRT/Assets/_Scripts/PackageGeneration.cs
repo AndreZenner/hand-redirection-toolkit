@@ -39,7 +39,8 @@ namespace HR_Toolkit
                 
                 var path = AssetDatabase.GUIDToAssetPath(guid);
                 if (path.Contains("Leap")||
-                    path.Contains("Blink"))
+                    path.Contains("Blink")||
+                    path.Contains("HandCalibration"))
                 {
                     continue;
                 }
@@ -142,6 +143,33 @@ namespace HR_Toolkit
             AssetDatabase.ExportPackage(exportedPackageAssetList.ToArray(), "Assets/../../Packages/HaRT_BSHR.unitypackage");
             
             Debug.Log("Finished BSHR Exporter");
+        }
+
+        /// <summary>
+        /// Export all assets for the HaRT_TrackerHandCalibration package automatically
+        /// </summary>
+        [MenuItem("HaRT/HaRT_TrackerHandCalibration Export")]
+        public static void Export_TrackerHandCalibration()
+        {
+            Debug.Log("Start TrackerHandCalibration Exporter");
+            var exportedPackageAssetList = new List<string>();
+
+            foreach (var guid in AssetDatabase.FindAssets("", new[] { "Assets/HandCalibration" }))
+            {
+                var path = AssetDatabase.GUIDToAssetPath(guid);
+                exportedPackageAssetList.Add(path);
+            }
+
+            // example scenes: get only TrackerHandCalibration scenes
+            foreach (var guid in AssetDatabase.FindAssets("HandCalibration", new[] { "Assets/ExampleScenes" }))
+            {
+                var path = AssetDatabase.GUIDToAssetPath(guid);
+                exportedPackageAssetList.Add(path);
+            }
+
+            AssetDatabase.ExportPackage(exportedPackageAssetList.ToArray(), "Assets/../../Packages/HaRT_TrackerHandCalibration.unitypackage");
+
+            Debug.Log("Finished TrackerHandCalibration Exporter");
         }
     }
 }
