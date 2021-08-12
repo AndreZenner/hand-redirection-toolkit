@@ -46,6 +46,12 @@
 [Aa]ssets/SteamVR_Resources.meta
 [Aa]ssets/StreamingAssets/SteamVR.meta
 
+# Vive Input Utility
+[Aa]ssets/HTC.UnityPlugin/**
+
+# XR Plugin Management
+[Aa]ssets/XR/**
+
 
 # Straming assets form Steam VR
 [Aa]ssets/StreamingAssets/SteamVR/**
@@ -77,6 +83,9 @@ ExportedObj/
 *.mdb
 *.opendb
 *.VC.db
+*.meta
+*.vsconfig
+
 
 # Unity3D generated meta files
 *.pidb.meta
