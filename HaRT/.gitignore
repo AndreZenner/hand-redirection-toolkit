@@ -37,6 +37,9 @@
 [Aa]ssets/ViveSR/**
 [Aa]ssets/ViveSR.meta
 
+# Leap
+[Aa]ssets/ThirdParty/*
+
 # Steam VR
 [Aa]ssets/SteamVR/**
 [Aa]ssets/SteamVR_Input/**
