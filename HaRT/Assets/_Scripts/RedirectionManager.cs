@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using HR_Toolkit.Thresholds;
 using UnityEditor;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace HR_Toolkit
 {
@@ -32,12 +31,7 @@ namespace HR_Toolkit
         /// be set to the hand's real position on the start of each redirection
         /// </summary>
         public GameObject warpOrigin;
-        /// <summary>
-        /// Reset Position is set in each RedirectionTechnique.
-        /// The ResetPosition is used between two redirections. Instead of redirecting from one target to another target,
-        /// the user will be redirected to the reset position first. This prevents to huge redirections. 
-        /// </summary>
-        private RedirectionObject resetPosition;
+        
 
         /// <summary>
         /// The disance threshold to align the real and virtual hand
@@ -51,6 +45,17 @@ namespace HR_Toolkit
         /// The physically tracked head position
         /// </summary>
         public GameObject body;
+        
+        /// <summary>
+        /// Reset Position is set in each RedirectionTechnique.
+        /// The ResetPosition is used between two redirections. Instead of redirecting from one target to another target,
+        /// the user will be redirected to the reset position first. This prevents to huge redirections. 
+        /// </summary>
+        [Tooltip("Note: This RedirectionObject needs an unmodified VirtualToRealConnection (realPos=virtualPos)")]
+        public RedirectionObject resetPosition;
+        
+        [Space(20)]
+
         /// <summary>
         /// The movement controller is automatically added to the Redirection Manager, it tracks the actual
         /// movement options and it's parameters
@@ -77,6 +82,7 @@ namespace HR_Toolkit
         /// The last redirected target
         /// </summary>
         public RedirectionObject lastTarget;
+       
 
         /// <summary>
         /// The speed of the hand movement when the hand is controlled by the mouse
@@ -94,9 +100,9 @@ namespace HR_Toolkit
         [HideInInspector]
         public MovementController.Movement movement;
 
+        public bool reachedTarget = false;
+
         private LineRenderer lineRenderer;
-        
-        
 
         /// <summary>
         /// On Awake we set the static instance of the Redirection Manager, so that all
@@ -150,28 +156,43 @@ namespace HR_Toolkit
             // check for space input -> Check for new target
             CheckForNewTarget();
 
-            if (target == null) return;
 
-            //use hand rotation of real hand (can be overwritten by Redirect())
-            virtualHand.transform.rotation = realHand.transform.rotation;
-
-            //apply redirection
-            target.Redirect();
-
+            if (target == null)     // 1-to-1 hand mapping
+            {
+                virtualHand.transform.position = realHand.transform.position;
+                //use hand rotation of real hand (can be overwritten by Redirect())
+                virtualHand.transform.rotation = realHand.transform.rotation;
+                reachedTarget = false;
+            }
+            else
+            {                       // redirection
+                //apply redirection
+                target.Redirect();
+                //use hand rotation of real hand (can be overwritten by Redirect())
+                virtualHand.transform.rotation = realHand.transform.rotation;
+            }
         }
+
 
         #region Called in Update
         private void CheckForNewTarget()
         {
             if (!Input.GetKeyDown("space")) return;
-            
-            lastTarget = target;
-            if (lastTarget != null)
+            if (target != null)
             {
-                lastTarget.EndRedirection();
+                if (!target.thisIsAResetPosition)
+                {
+                    // current no resetPosition: update lastTarget 
+                    // curret is resetPosition: keep the index of the lastTarget and dont override it
+                    lastTarget = target;
+                }
+                // end current redirection
+                target.EndRedirection();
             }
-                
+            
             target = GetNextTarget();
+            Debug.Log("--- new target: " + target.gameObject.name + " ---");
+
             UpdateWarpOrigin();
             if (target != null)
             {
@@ -181,7 +202,12 @@ namespace HR_Toolkit
 
         private void UpdateWarpOrigin()
         {
-            
+            warpOrigin.transform.position = this.realHand.transform.position;
+        }
+
+        public void ResetTarget()
+        {
+            this.target = null;
         }
 
         private RedirectionObject GetNextTarget()
@@ -190,10 +216,11 @@ namespace HR_Toolkit
             {
                 throw new Exception("There are no redirected prefabs that could be targeted");
             }
-            
+
             // there was no previous target selected, we need to set it on first call
             if (target == null && lastTarget == null)
             {
+                reachedTarget = false;
                 return allRedirectedPrefabs[0];
             }
             
@@ -206,13 +233,28 @@ namespace HR_Toolkit
             var index = allRedirectedPrefabs.IndexOf(lastTarget);
             var newIndex = (index + 1) % allRedirectedPrefabs.Count;
 
+            reachedTarget = false;
             return allRedirectedPrefabs[newIndex];        
         }
-        
-        
-        
+
+        public void ReturnToResetPosition()
+        {
+            // return if there is no resetPosition
+            if (resetPosition == null)
+            {
+                Debug.Log("--- waiting for new target ---");
+                return;
+            }
+
+            Debug.Log("--- return to ResetPosition or choose a new target ---");
+            lastTarget = target;
+            target = resetPosition;
+            UpdateWarpOrigin();
+            target.StartRedirection();
+        }
+
         #endregion
-        
+
         public void SetVirtualHandToRealHand()
         {
             virtualHand.transform.position = realHand.transform.position;
@@ -310,10 +352,9 @@ namespace HR_Toolkit
         {
             warpOrigin.transform.position = newOrigin;
         }
+
+      
         
         #endregion
-
-
-
     }
 }

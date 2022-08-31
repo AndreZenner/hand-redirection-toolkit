@@ -17,6 +17,8 @@ using System.Linq;
 /// </summary>
 public class Zenner_Regitz_Krueger_BodyWarping_BSHR : BodyWarping
 {
+    [Space(10)]
+
     //default values as used in the original paper
     public float betaMax = 4.5f;    
     public float gMin = 0.94f;
@@ -33,6 +35,15 @@ public class Zenner_Regitz_Krueger_BodyWarping_BSHR : BodyWarping
     private Vector3 p_;     // dummy target
     private Vector3 vp_;
 
+
+
+    private void Start()
+    {
+        if (testWithKeyB)
+        {
+            Debug.Log("blink: key B");
+        }
+    }
 
     public override void Init(RedirectionObject redirectionObject, Transform head, Vector3 warpOrigin)
     {
@@ -53,7 +64,6 @@ public class Zenner_Regitz_Krueger_BodyWarping_BSHR : BodyWarping
             GetComponent<BlinkDetector>().running = true;
             GetComponent<BlinkDetector>().validBlinkDetected = false;
         }
-
     }
 
     public override void ApplyRedirection(Transform realHandPos, Transform virtualHandPos, Transform warpOrigin, RedirectionObject target,
@@ -76,8 +86,7 @@ public class Zenner_Regitz_Krueger_BodyWarping_BSHR : BodyWarping
         float alpha = ds / (ds + dp);
         Vector3 w = alpha * (v - p_) + b;
 
-        virtualHandPos.position = realHandPos.position + w; 
-
+        virtualHandPos.position = realHandPos.position + w;
     }
 
     public void ComputeDummyTarget(){

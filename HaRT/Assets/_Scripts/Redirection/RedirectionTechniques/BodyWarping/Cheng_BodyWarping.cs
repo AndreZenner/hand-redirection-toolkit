@@ -1,6 +1,9 @@
 ﻿
 using HR_Toolkit.Redirection;
 using UnityEngine;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
 
 namespace HR_Toolkit
 {
@@ -23,13 +26,17 @@ namespace HR_Toolkit
     /// InProceedings of the 2017 CHI Conference on Human Factors in Computing Systems (CHI ’17). ACM, New York, NY, USA,3718–3728.
     /// DOI: http://dx.doi.org/10.1145/3025453.3025753
     /// 
+    /// 
     /// </summary>
+    /// 
+
+
     public class Cheng_BodyWarping : BodyWarping
     {
         /// <summary>
         /// Distance vector between the virtual and physical target
         /// </summary>
-        private Vector3 _t; 
+        private Vector3 _t;
         /// <summary>
         /// the null vector
         /// </summary>
@@ -38,19 +45,32 @@ namespace HR_Toolkit
         /// Checks if the real hand stayed in the Zero Warp Zone
         /// </summary>
         private bool _isInZeroWarpZone = false;
+        
+        [Space(10)]
+
         /// <summary>
         /// distance in m from player position where no warping is applied
         /// </summary>
         public float zeroWarpDistance = 0;
 
+        Vector3 w = Vector3.zero;
+
+                
+        #region override: Init, ApplyRedirection, EndRedirection
+
+        public override void Init(RedirectionObject redirectionObject, Transform head, Vector3 warpOrigin)
+        {
+            // compute the distance vector between the virtual and physical target
+            _t = redirectionObject.GetVirtualTargetPos() - redirectionObject.GetRealTargetPos();
+            _t0 = w;
+        }
 
         public override void ApplyRedirection(Transform realHandPos, Transform virtualHandPos, 
             Transform warpOrigin, RedirectionObject target, Transform playerTransform)
         {
-            var ds = 0f;
+            float ds = 0f;
             // compute the distance between the real hand position and the users body position
             var dist = Vector3.Distance(realHandPos.position, playerTransform.position);
-            // TODO update comments
             // check whether the hand is below the zero warp distance or not. If so, set ds to zero,
             if (dist < zeroWarpDistance)
             {
@@ -65,25 +85,53 @@ namespace HR_Toolkit
                 {
                     RedirectionManager.instance.SetWarpOrigin(realHandPos.position);
                 }
+
                 ds = (realHandPos.position - warpOrigin.position).magnitude;
                 _isInZeroWarpZone = false;
             }
+
             // compute the length between the physical hand and the physical target
-            var dp = (realHandPos.position - target.GetRealTargetPos()).magnitude;
+            float dp;
+            calculateDp(realHandPos, target, out dp);
+
             // compute the shift ratio, it ranges between 0 and 1
             var a = ds / (ds + dp);
+
+            // a = vSoFar / (vSoFar + vStillMissing);
             // compute the warp 
-            var w = a * _t + (1 - a) * _t0;
-            // applay the warp to the virtual hand
+            w = a * _t + (1 - a) * _t0;
+
+            // apply the warp to the virtual hand
             virtualHandPos.position = realHandPos.position + w;
         }
 
-        public override void Init(RedirectionObject redirectionObject, Transform head, Vector3 warpOrigin)
+        public override void EndRedirection()
         {
-            // compute the distance vector between the virtual and physical target
-            _t = redirectionObject.GetVirtualTargetPos() - redirectionObject.GetRealTargetPos();
-            // not yet implemented: non-zero initial offsets
-            _t0 = Vector3.zero;
+            base.EndRedirection();
         }
+
+
+        #endregion
+
+        #region help methods
+
+        public void Set_t0 (Vector3 new_t0)
+        {
+            _t0 = new_t0;
+        }
+
+        public bool CheckBehindWarpingSpace(Transform realHandPos, Transform warpOrigin)
+        {
+            return (realHandPos.position.z < warpOrigin.position.z);
+        }
+
+        public Vector3 Getw ()
+        {
+            return w;
+        }
+
+        #endregion
+
+        
     }
 }

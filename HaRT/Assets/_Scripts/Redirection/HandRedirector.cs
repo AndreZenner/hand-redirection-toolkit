@@ -28,7 +28,7 @@ namespace HR_Toolkit
         /// The ResetPosition is used between two redirections. Instead of redirecting from one target to another target,
         /// the user will be redirected to the reset position first. This prevents to huge redirections. 
         /// </summary>
-        public RedirectionObject resetPosition; // TODO
+       // public RedirectionObject resetPosition; // TODO
         /// <summary>
         /// The Init() method is neccessary for all Redirection Techniques. Init() gets called everytime a Redirected
         /// Prefab is set to next target.
@@ -60,7 +60,7 @@ namespace HR_Toolkit
 
         public virtual void EndRedirection()
         {
-            
+
         }
 
         public virtual bool HasThresholds()
@@ -73,6 +73,9 @@ namespace HR_Toolkit
             throw new NotImplementedException("There are no thresholds for this technique!");
         }
         
-        
+        public virtual RedirectionObject GetResetPosition()
+        {
+            return null;
+        }
     }
 }

@@ -17,6 +17,7 @@ public class RedirectionManagerEditor : Editor
     private SerializedProperty _virtualHand;
     private SerializedProperty _warpOrigin;
     private SerializedProperty _body;
+    private SerializedProperty _resetPosition;
     private SerializedProperty _allRedirectedPrefabs;
 
     private SerializedProperty _redirectionTechnique;
@@ -37,6 +38,7 @@ public class RedirectionManagerEditor : Editor
         _virtualHand = serializedObject.FindProperty("virtualHand");
         _warpOrigin = serializedObject.FindProperty("warpOrigin");
         _body = serializedObject.FindProperty("body");
+        _resetPosition = serializedObject.FindProperty("resetPosition");
         _allRedirectedPrefabs = serializedObject.FindProperty("allRedirectedPrefabs");
 
         _redirectionTechnique = serializedObject.FindProperty("redirectionTechnique");
@@ -59,10 +61,16 @@ public class RedirectionManagerEditor : Editor
         EditorGUILayout.PropertyField(_virtualHand, new GUIContent("Virtual Hand"));
         EditorGUILayout.PropertyField(_warpOrigin, new GUIContent("Warp Origin"));
         EditorGUILayout.PropertyField(_body, new GUIContent("Body"));
+        EditorGUILayout.PropertyField(_resetPosition, new GUIContent("Reset Position"));
+        EditorGUILayout.Space(); 
+        EditorGUILayout.Space(); 
         EditorGUILayout.LabelField("Movement Options", EditorStyles.whiteLargeLabel);
         EditorGUILayout.PropertyField(_movement, new GUIContent("Movement"));
-
+        EditorGUILayout.Space();
+        EditorGUILayout.Space();
         DefineRedirectedPrefabSection();
+        EditorGUILayout.Space();
+        EditorGUILayout.Space();
         DefineRedirectionSection();
         //DefineThresholdControllerSection();
 
@@ -78,6 +86,7 @@ public class RedirectionManagerEditor : Editor
         }*/
 
         serializedObject.ApplyModifiedProperties();
+        EditorGUILayout.Space();
         DefineMovement();
     }
     

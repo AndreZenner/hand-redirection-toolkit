@@ -6,13 +6,13 @@ using HR_Toolkit.Redirection;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Assertions;
 
 namespace HR_Toolkit
 {
     public class RedirectionObject : MonoBehaviour
     {
         public List<VirtualToRealConnection> positions;
-        [Space]
         [Header("Optional Settings:")]
         [Tooltip("Optional - If no redirection technique is selected, the default technique that is set in the Redirection Manager will be used. Otherwise the selected technique will only be used on this object.")]
         public HandRedirector redirectionTechnique;
@@ -28,7 +28,8 @@ namespace HR_Toolkit
         public UnityEvent onRedirectionActivated;
         public UnityEvent onRedirectionDeactivated;
 
-        private Color _startColor;
+        private Color[] _startColors;
+        Renderer[] childrenRenderer = new Renderer[10];
 
         void Start()
         {
@@ -52,7 +53,9 @@ namespace HR_Toolkit
                 positions.Add(prefabCorrespondent);
             }
 
+            getRendererFromChildren();
         }
+
 
         public void Redirect()
         {
@@ -73,38 +76,80 @@ namespace HR_Toolkit
             onRedirectionDeactivated.Invoke();
             HighlightOff();
             redirectionTechnique.EndRedirection();
-            if (useResetPosition)
-            {
-                resetPosition.HighlightOff();
-            }
         }
-        
-        
-        #region Private helpers
-        private void OnHandEnter()
-        {
-            if (!useResetPosition || RedirectionManager.instance.target != this) return;
 
-            this.HighlightOff();
-            resetPosition.HighlightOn();
-        }
-        private void OnTriggerEnter(Collider other)
+        public void HandReachedCube()
         {
-            if (!other.CompareTag("virtualHand") || thisIsAResetPosition) return;
-            OnHandEnter();
+            Debug.Log("--- reached target: " + name + " ---");
+
+            // the hand reached a yellow cube (target/ resetPosition)
+            HighlightOff();
+
+            if (useResetPosition && !thisIsAResetPosition)
+            {
+                // reached target && useResetPosition --> ReturnToResetPosition
+                RedirectionManager.instance.reachedTarget = false;              // tell RedMan that there is a "new target"
+                RedirectionManager.instance.ReturnToResetPosition();
+            }
+            else if (useResetPosition && thisIsAResetPosition)
+            {
+                // cube was a resetPosition --> end Redirection & wait for newTarget 
+                Debug.Log("--- redirection switched off, waiting for new target ---");
+                redirectionTechnique.EndRedirection();
+            }
+          /*  else
+            {
+                // !useResetPosition
+                Debug.Log("--- waiting for new target ---");
+                reachedTarget = true;           // wie wann false??
+            }*/
         }
+
+
+        #region Private helpers
+
+
         private void HighlightOn()
         {
-            _startColor = this.GetComponent<Renderer>().material.color;
-            GetComponent<Renderer>().material.color = Color.yellow;   
+            int i = 0;
+            // highlight all Renderer
+            foreach(Renderer childRenderer in childrenRenderer)
+            {
+                childRenderer.material.color = Color.yellow;
+                i++;
+            }
         }
 
         private void HighlightOff()
         {
-            GetComponent<Renderer>().material.color = _startColor;
+            int i = 0;
+            // highlightOff for all Renderer
+            foreach (Renderer childRenderer in childrenRenderer)
+            {
+                childRenderer.material.color = _startColors[i];
+                i++;
+            }
         }
 
+        void getRendererFromChildren()
+        {
+            List<Renderer> rendererList = new List<Renderer>(); 
+            List<Color> colorList = new List<Color>(); 
+            // check all Renderer for the highlighting
+            foreach (Renderer childRenderer in transform.GetComponentsInChildren<Renderer>())
+            {
+                // VirtualToRealConnection remains the same
+                if (childRenderer.gameObject.name.Equals("VirtualToRealConnection")) break;
 
+                colorList.Add(childRenderer.material.color);
+                rendererList.Add(childRenderer);
+            }
+
+            _startColors = colorList.ToArray();
+            childrenRenderer = rendererList.ToArray();
+        }
+
+       
         #endregion
 
         #region Getter & Setter
@@ -120,7 +165,7 @@ namespace HR_Toolkit
         }
         public Vector3 GetVirtualTargetPos()
         {
-            if (positions[0] == null) if (positions[0] != null) Debug.LogWarning("The RedirectionObject " + gameObject.name + "is missing a VirtualToRealConnection. Make sure one is placed as a child object and it is assigned in the positions array!", transform);
+            if (positions[0] == null) Debug.LogWarning("The RedirectionObject " + gameObject.name + "is missing a VirtualToRealConnection. Make sure one is placed as a child object and it is assigned in the positions array!", transform);
 
             return positions[0].virtualPosition.position;
         }
@@ -178,7 +223,5 @@ namespace HR_Toolkit
         }
 
         #endregion
-
-
     }
 }

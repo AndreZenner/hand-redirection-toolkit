@@ -69,8 +69,8 @@ public class MovementController : MonoBehaviour
                 //break;
             case Movement.VR:
                 // activate movement of vr hand
-                //realHand.transform.parent = trackedHand.transform;
-                //realHand.transform.position = Vector3.zero;
+                // realHand.transform.parent = trackedHand.transform;
+                // realHand.transform.position = Vector3.zero;
                 realHand.transform.position = trackedHand.transform.position;
                 realHand.transform.rotation = trackedHand.transform.rotation;
                 virtualHand.transform.position = realHand.transform.position;

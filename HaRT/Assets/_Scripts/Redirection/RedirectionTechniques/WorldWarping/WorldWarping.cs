@@ -24,6 +24,11 @@ namespace HR_Toolkit
         private static float MAX_POSSIBLE_HEAD_TRANSLATION = 0.1f;
         private static float OBJECTS_ARE_TRANSLATIONAL_ALIGNED = 0.01f;
 
+        public override void EndRedirection()
+        {
+            RedirectionManager.instance.target = null;
+        }
+
         #region Fields: World Warping Thresholds
         [Header("Azmandian's Gain Factors")]
         [Tooltip("Scaling factor for a rotation towards a target (Azmandian: up by 49%)")]

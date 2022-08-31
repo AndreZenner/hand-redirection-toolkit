@@ -14,18 +14,38 @@ namespace HR_Toolkit
     {
         [Header("Thresholds")] 
         [Range(0f, 40.5f)]
-        public float horizontalThreshold;
+        public float horizontalThreshold = 1.0f;
         [Range(0f, 40.5f)]
-        public float verticalThreshold;
+        public float verticalThreshold = 1.0f;
         [Range(1f, 3f)]
-        public float gainForwards;
+        public float gainForwards = 1.0f;
         [Range(0.01f, 1f)]
-        public float gainDownwards;
+        public float gainDownwards = 0.01f;
+
+        [Tooltip("Accuracy [m] required to reach a target")]
+        public float epsilon = 0.03f;
+
+        [Header("Additional")]
+        [Tooltip("Choose the distance calculation method for the current BW algorithm. Initially the standard method")]
+        DistanceCalculationMode distanceCalculation = DistanceCalculationMode.standard;
+        
 
         public enum ThresholdDirection
         {
-            Horizontal, Vertical, Gain}
+            Horizontal, Vertical, Gain
+        }
 
+        public enum DistanceCalculationMode
+        {
+            standard
+        }
+
+        public override void EndRedirection()
+        {
+            RedirectionManager.instance.target = null;
+        }
+
+        #region thresholds
         public override bool HasThresholds()
         {
             return true;
@@ -47,7 +67,6 @@ namespace HR_Toolkit
                 redirectionObject.GetVirtualTargetPos())) return false;
             
             return true;
-
         }
 
         public bool CheckThreshold(ThresholdDirection thresholdDirection, Vector3 warpOrigin, Vector3 realTarget, Vector3 virtualTarget)
@@ -55,18 +74,15 @@ namespace HR_Toolkit
             var virtualTargetDir = virtualTarget - warpOrigin;
             var realTargetDir = realTarget - warpOrigin;
             var angle = 0f;
-            
 
             switch (thresholdDirection)
             {
                 case ThresholdDirection.Horizontal:
-                    angle = ComputeRedirectionAngel(Vector3.forward, Vector3.right, realTarget,
-                                            virtualTarget, Vector3.up, warpOrigin);
+                    angle = ComputeRedirectionAngle(Vector3.forward, Vector3.right, realTarget, virtualTarget, Vector3.up, warpOrigin);
                     if (angle <= horizontalThreshold) return true;
                     break;
                 case ThresholdDirection.Vertical:
-                    angle = ComputeRedirectionAngel(Vector3.forward, Vector3.up, realTarget,
-                           virtualTarget, Vector3.up, warpOrigin);
+                    angle = ComputeRedirectionAngle(Vector3.forward, Vector3.up, realTarget, virtualTarget, Vector3.up, warpOrigin);
                     if (angle <= verticalThreshold) return true;
                     return true;
                 case ThresholdDirection.Gain:
@@ -79,17 +95,18 @@ namespace HR_Toolkit
                     break;
             }
             return false;
-            
         }
 
+        #endregion
+
+        #region help methods
         public static float GetVerticalAngle(RedirectionObject redirectionObject)
         {
-            
             if (redirectionObject == null)
             {
                 return 0;
             }
-            var angle = ComputeRedirectionAngel(Vector3.forward.normalized, Vector3.up.normalized, 
+            var angle = ComputeRedirectionAngle(Vector3.forward.normalized, Vector3.up.normalized, 
                 redirectionObject.GetRealTargetPos(), redirectionObject.GetVirtualTargetPos(), Vector3.up, 
                 redirectionObject.GetWarpOrigin().transform.position);
 
@@ -103,9 +120,8 @@ namespace HR_Toolkit
                 return 0;
             }
 
-            var angle = ComputeRedirectionAngel(Vector3.forward, Vector3.right, redirectionObject.GetRealTargetPos(),
+            var angle = ComputeRedirectionAngle(Vector3.forward, Vector3.right, redirectionObject.GetRealTargetPos(),
                 redirectionObject.GetVirtualTargetPos(), Vector3.up, redirectionObject.GetWarpOrigin().transform.position);
-
             
             return angle;
         }
@@ -121,13 +137,11 @@ namespace HR_Toolkit
             var pProj = t - height * h;
             // unwarped offset in plane
             return  pProj - o; 
-            
         }
         
 
-        private static float ComputeRedirectionAngel(Vector3 f, Vector3 r, Vector3 tR, Vector3 tV, Vector3 planeNormal, Vector3 o)
+        private static float ComputeRedirectionAngle(Vector3 f, Vector3 r, Vector3 tR, Vector3 tV, Vector3 planeNormal, Vector3 o)
         {
-
             var posReal = ComputeProjection(f, r, o, tR);
             var posVirtual = ComputeProjection(f, r, o, tV);
 
@@ -146,6 +160,29 @@ namespace HR_Toolkit
             var r = realTargetDir.magnitude;
             return (v / r);
         }
-        
+
+        #endregion
+
+        #region distance calculation
+
+        public void calculateDp(Transform realHandPos, RedirectionObject target, out float dp)
+        {
+            switch (distanceCalculation)
+            {
+                case DistanceCalculationMode.standard:
+                    // dp = (realHandPos.position - target.GetRealTargetPos()).magnitude;
+                    dp = Mathf.Max((realHandPos.position - target.GetRealTargetPos()).magnitude - epsilon, 0);
+                    break;
+                    
+                default:
+                    Debug.LogWarning("There was no matching distanceCalculationMode. This should not happen");
+                    //dp = (realHandPos.position - target.GetRealTargetPos()).magnitude;
+                    dp = Mathf.Max((realHandPos.position - target.GetRealTargetPos()).magnitude - epsilon, 0);
+                    distanceCalculation = DistanceCalculationMode.standard;
+                    break;
+            }
+        }
+
+        #endregion
     }
 }

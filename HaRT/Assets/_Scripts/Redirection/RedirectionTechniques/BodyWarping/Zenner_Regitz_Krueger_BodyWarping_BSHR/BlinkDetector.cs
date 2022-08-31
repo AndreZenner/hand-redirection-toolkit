@@ -91,6 +91,7 @@ public class BlinkDetector : MonoBehaviour
                 if (virtualHandAwayFromGazeRay) 
                 {
                     validBlinkDetected = true;
+                    Debug.Log("Blink");
                 }
             }
 

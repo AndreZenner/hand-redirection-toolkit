@@ -13,6 +13,12 @@ namespace HR_Toolkit
     public class WorldWarping_Rotation_Translation : WorldWarping
     {
         private bool _initTranslationalWarping = false;
+
+        private void Start ()
+        {
+            Debug.Log("Head Rotation: Q, E");
+        }
+
         public override void Init(RedirectionObject redirectionObject, Transform head, Vector3 warpOrigin)
         {
            // rotational:
