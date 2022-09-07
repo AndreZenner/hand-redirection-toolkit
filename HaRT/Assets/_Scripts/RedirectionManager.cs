@@ -247,6 +247,7 @@ namespace HR_Toolkit
             }
 
             Debug.Log("--- return to ResetPosition or choose a new target ---");
+            RedirectionManager.instance.reachedTarget = false;              // tell RedMan that there is a "new target"
             lastTarget = target;
             target = resetPosition;
             UpdateWarpOrigin();

@@ -88,7 +88,6 @@ namespace HR_Toolkit
             if (useResetPosition && !thisIsAResetPosition)
             {
                 // reached target && useResetPosition --> ReturnToResetPosition
-                RedirectionManager.instance.reachedTarget = false;              // tell RedMan that there is a "new target"
                 RedirectionManager.instance.ReturnToResetPosition();
             }
             else if (useResetPosition && thisIsAResetPosition)

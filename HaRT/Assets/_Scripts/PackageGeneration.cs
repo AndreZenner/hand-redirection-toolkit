@@ -101,7 +101,7 @@ namespace HR_Toolkit
                 exportedPackageAssetList.Add(path);
             }
             
-            // prefabs: get only leap scenes
+            // prefabs: get only leap prefabs
             foreach (var guid in AssetDatabase.FindAssets("Leap", new []{"Assets/Prefabs"}))
             {
                 var path = AssetDatabase.GUIDToAssetPath(guid);
@@ -135,6 +135,13 @@ namespace HR_Toolkit
             
             // example scenes: get only BSHR scenes
             foreach (var guid in AssetDatabase.FindAssets("Blink", new []{"Assets/ExampleScenes"}))
+            {
+                var path = AssetDatabase.GUIDToAssetPath(guid);
+                exportedPackageAssetList.Add(path);
+            }
+
+            // prefabs: get only BSHR prefabs
+            foreach (var guid in AssetDatabase.FindAssets("BSHR", new[] { "Assets/Prefabs" }))
             {
                 var path = AssetDatabase.GUIDToAssetPath(guid);
                 exportedPackageAssetList.Add(path);
