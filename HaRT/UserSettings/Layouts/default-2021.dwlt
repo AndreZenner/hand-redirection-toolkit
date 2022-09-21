@@ -74,7 +74,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 56
+  controlID: 88
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 104
+  controlID: 76
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -273,7 +273,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 45
+  controlID: 17
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -298,7 +298,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 46
+  controlID: 18
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -368,22 +368,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs
+    - Assets/ExampleScenes/VR
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Prefabs
+  - Assets/ExampleScenes/VR
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\chiarakarr\Desktop\UnityProjects\HaRT-final\HaRT
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 92}
-    m_SelectedIDs: 9c5b0000
-    m_LastClickedID: 23452
-    m_ExpandedIDs: 00000000945b0000965b0000985b00009a5b00009c5b00009e5b0000a05b0000c85b000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 79}
+    m_SelectedIDs: ee5b0000
+    m_LastClickedID: 23534
+    m_ExpandedIDs: 00000000945b0000965b0000985b00009a5b00009c5b00009e5b0000a05b0000c25b000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -541,9 +541,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: eefaffff
-      m_LastClickedID: -1298
-      m_ExpandedIDs: 34fbffff
+      m_SelectedIDs: 06f0ffff
+      m_LastClickedID: -4090
+      m_ExpandedIDs: 06f0ffff08f0ffff06f3ffffdcf6ffffe8f6ffff34fbffff5a6000007c6000000c6500002a6500004265000070650000b6650000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -795,7 +795,7 @@ MonoBehaviour:
   m_Position:
     m_Target: {x: 0.258, y: 0.8819995, z: 0.20028715}
     speed: 2
-    m_Value: {x: -0.044450045, y: 4.1527157, z: -0.14560628}
+    m_Value: {x: 0.258, y: 0.8819995, z: 0.20028715}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -844,11 +844,11 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: -0.28330746, y: -0.12556225, z: 0.03744321, w: -0.95004207}
     speed: 2
-    m_Value: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
+    m_Value: {x: -0.28330594, y: -0.12556158, z: 0.03744301, w: -0.95003694}
   m_Size:
     m_Target: 0.7686454
     speed: 2
-    m_Value: 14.331453
+    m_Value: 0.7686454
   m_Ortho:
     m_Target: 0
     speed: 2
