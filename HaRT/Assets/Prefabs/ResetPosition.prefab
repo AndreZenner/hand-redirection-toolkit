@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1629021417464415959}
   - component: {fileID: 1629021417464415956}
   - component: {fileID: 6712158499010059064}
-  - component: {fileID: 7850917939489994613}
+  - component: {fileID: 503880370056077482}
   m_Layer: 11
   m_Name: ResetPosition
   m_TagString: virtualTarget
@@ -125,7 +125,7 @@ MonoBehaviour:
   onRedirectionDeactivated:
     m_PersistentCalls:
       m_Calls: []
---- !u!54 &7850917939489994613
+--- !u!54 &503880370056077482
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -212,36 +212,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: VirtualToRealConnection
-      objectReference: {fileID: 0}
-    - target: {fileID: 8468153220424936684, guid: 71e57dad47c3ac34a8a151bf83be34d5,
-        type: 3}
-      propertyPath: m_Positions.Array.data[0].x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8468153220424936684, guid: 71e57dad47c3ac34a8a151bf83be34d5,
-        type: 3}
-      propertyPath: m_Positions.Array.data[0].y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8468153220424936684, guid: 71e57dad47c3ac34a8a151bf83be34d5,
-        type: 3}
-      propertyPath: m_Positions.Array.data[0].z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8468153220424936684, guid: 71e57dad47c3ac34a8a151bf83be34d5,
-        type: 3}
-      propertyPath: m_Positions.Array.data[1].x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8468153220424936684, guid: 71e57dad47c3ac34a8a151bf83be34d5,
-        type: 3}
-      propertyPath: m_Positions.Array.data[1].y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8468153220424936684, guid: 71e57dad47c3ac34a8a151bf83be34d5,
-        type: 3}
-      propertyPath: m_Positions.Array.data[1].z
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71e57dad47c3ac34a8a151bf83be34d5, type: 3}
