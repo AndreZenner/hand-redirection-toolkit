@@ -126,7 +126,8 @@ namespace HR_Toolkit
         {
             Debug.Log("Start BSHR Exporter");
             var exportedPackageAssetList = new List<string>();
-            
+
+            // scripts: get only BSHR package
             foreach (var guid in AssetDatabase.FindAssets("", new []{"Assets/_Scripts/Redirection/RedirectionTechniques/BodyWarping/Zenner_Regitz_Krueger_BodyWarping_BSHR"}))
             {
                 var path = AssetDatabase.GUIDToAssetPath(guid);

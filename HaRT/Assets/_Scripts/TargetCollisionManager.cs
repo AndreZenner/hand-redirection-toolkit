@@ -11,6 +11,7 @@ public class TargetCollisionManager : MonoBehaviour
     
     private void OnTriggerEnter(Collider collision)
     {
+
         if (RedirectionManager.instance.target == null) return;
         if (RedirectionManager.instance.reachedTarget) return;      // target already reached previously - nothing to do
 

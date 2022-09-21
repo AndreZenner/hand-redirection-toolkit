@@ -408,6 +408,11 @@ PrefabInstance:
       propertyPath: allRedirectedPrefabs.Array.data[2]
       value: 
       objectReference: {fileID: 88600951}
+    - target: {fileID: 3327638787377050945, guid: 13e09beb6ff11f04b863cfb0c4099342,
+        type: 3}
+      propertyPath: m_Center.y
+      value: -0.0000076293945
+      objectReference: {fileID: 0}
     - target: {fileID: 5757090491356117767, guid: 13e09beb6ff11f04b863cfb0c4099342,
         type: 3}
       propertyPath: m_Name
