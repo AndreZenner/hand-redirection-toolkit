@@ -4620,7 +4620,7 @@ PrefabInstance:
     - target: {fileID: 1629021417464415954, guid: 28da7e353f747074f81d17339dcc5241,
         type: 3}
       propertyPath: m_Name
-      value: ResetPosition new
+      value: ResetPosition
       objectReference: {fileID: 0}
     - target: {fileID: 1629021417464415957, guid: 28da7e353f747074f81d17339dcc5241,
         type: 3}
