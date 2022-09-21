@@ -51,9 +51,11 @@
 
 # Vive Input Utility
 [Aa]ssets/HTC.UnityPlugin/**
+[Aa]ssets/HTC.UnityPlugin.meta
 
 # XR Plugin Management
 [Aa]ssets/XR/**
+[Aa]ssets/XR.meta
 
 
 # Straming assets form Steam VR
@@ -86,7 +88,6 @@ ExportedObj/
 *.mdb
 *.opendb
 *.VC.db
-*.meta
 *.vsconfig
 
 
