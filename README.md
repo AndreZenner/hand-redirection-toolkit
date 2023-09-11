@@ -31,7 +31,7 @@ optional add-on #1:
 - [HaRT_Leap](Packages/HaRT_Leap.unitypackage) -> if you want to use Leap Motion; requires the HaRT_core package (see above), SteamVR (see above), and [Leap Motion SDK](https://developer.leapmotion.com/unity)
 
 optional add-on #2:
-- [HaRT_VR_BlinkSuppressedHandRedirection](Packages/HaRT_VR_BlinkSuppressedHandRedirection.unitypackage) -> if you want to use eye tracking with the Vive Pro Eye and make use of the Blink-Suppressed Hand Redirection Technique; requires the HaRT_core package (see above), SteamVR (see above), and [SRAnipal SDK](https://developer.vive.com/resources/vive-sense/sdk/vive-eye-and-facial-tracking-sdk/)
+- [HaRT_VR_BlinkSuppressedHandRedirection](Packages/HaRT_BSHR.unitypackage) -> if you want to use eye tracking with the Vive Pro Eye and make use of the Blink-Suppressed Hand Redirection Technique; requires the HaRT_core package (see above), SteamVR (see above), and [SRAnipal SDK](https://developer.vive.com/resources/vive-sense/sdk/vive-eye-and-facial-tracking-sdk/)
 
 For more details, visit our [Get Started Guide in the Wiki](../../wiki/Get-Started)
 
