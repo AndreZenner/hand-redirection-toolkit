@@ -33,6 +33,9 @@ optional add-on #1:
 optional add-on #2:
 - [HaRT_BSHR](Packages/HaRT_BSHR.unitypackage) -> if you want to use eye tracking with the Vive Pro Eye and make use of the Blink-Suppressed Hand Redirection Technique; requires the HaRT_core package (see above), SteamVR (see above), and [SRAnipal SDK](https://developer.vive.com/resources/vive-sense/sdk/vive-eye-and-facial-tracking-sdk/)
 
+optional add-on #3:
+- [HaRT_SBHR](Packages/HaRT_SBHR.unitypackage) -> if you want to use eye tracking with the Vive Pro Eye and make use of the Saccadic & Blink-Suppressed Hand Redirection Technique; requires the HaRT_core package (see above), SteamVR (see above), and [SRAnipal SDK](https://developer.vive.com/resources/vive-sense/sdk/vive-eye-and-facial-tracking-sdk/)
+
 For more details, visit our [Get Started Guide in the Wiki](../../wiki/Get-Started)
 
 ## Development
